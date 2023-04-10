@@ -1,0 +1,27 @@
+.DS_Store
+node_modules/
+dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+ 
+# Editor directories and files
+.idea
+.vscode
+.hbuilderx
+.svn
+.temp
+.cache
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# package
+*.apk
+*.ipa
+
+# env
+.env.local
+.env.*.local
