@@ -8,6 +8,59 @@
 2. for of 循环
 3. 一些数组的高阶函数：forEach、map、some、every、find、findIndex、indexOf、lastIndexOf、filter、reduce、includes
 
+### 数组乱序的实现
+
+```js
+const arr = [1, 2, 3, 4, 5, 6];
+
+/**
+ * 这种方法利用set集合不重复的特性，将数组下标都通过随机生成出来
+ * 最后通过map方法将下标转换回数组数据
+ * 但是，这种方法效率较低，不确定性高，因为不知道收集完所有的下标需要遍历几次
+ * 数组数据越多需要遍历的次数越多
+ */
+function arrayDisorder(arr) {
+  const set = new Set();
+  const len = arr.length;
+  while (true) {
+    const index = Math.floor(Math.random() * len);
+    if (set.size < len) {
+      set.add(index);
+    } else {
+      break;
+    }
+  }
+  const newArr = [...set].map((index) => arr[index]);
+  return newArr;
+}
+
+/**
+ * 这种方法只需要遍历一次数组即可完成乱序
+ * 在每次循环的时候都生成一个随机的下标
+ * 然后将当前遍历进行中的数据和这个随机下标的数据进行位置替换
+ * 这样保证了每个元素至少进行了一次位置交换，但是可能存在前面交换以后后面被交换回来的问题
+ * 不过这个概率是很低的，数据量越大出现这种概率就越低
+ */
+function arrayDisorder2(arr) {
+  // 防止污染原数组，函数传值是值传递，修改arr不会影响调用时外层传递进来的arr
+  arr = [...arr];
+  const len = arr.length;
+  for (let i = 0; i < arr.length; i++) {
+    const index = Math.floor(Math.random() * len);
+    // const randomItem = arr[index];
+    // arr[index] = arr[i];
+    // arr[i] = randomItem;
+
+    // 使用解构赋值交换位置
+    [arr[index], arr[i]] = [arr[i], arr[index]];
+  }
+  return arr;
+}
+
+// console.log(arrayDisorder(arr))
+// console.log(arrayDisorder2(arr))
+```
+
 ## CSS
 
 ### BFC
