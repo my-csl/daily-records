@@ -1,4 +1,4 @@
-import { defineUserConfig, defaultTheme } from 'vuepress'
+import { defineUserConfig, defaultTheme } from 'vuepress';
 
 export default defineUserConfig({
   lang: 'zh-CN',
@@ -18,10 +18,11 @@ export default defineUserConfig({
           children: [
             '/guide/README.md',
             '/guide/getting-started.md',
-            '/guide/interview-questions.md'
+            '/guide/interview-questions.md',
+            '/guide/vue3-source-code.md'
           ]
         }
       ]
     }
   })
-})
+});
