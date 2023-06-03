@@ -79,3 +79,28 @@ app.mount('#app');
 
 - **摒弃边界条件。** 在大型框架中，都会有很多边界条件判断，以适应不同环境下框架的正确运行，但是我们阅读源码的时候是可以不用去考虑这些的
 - **保持一条主线。** 大型框架的源码都是很复杂的，没必要全部从头看到尾，这样容易陷入逻辑的泥沼。我们应该关心一个功能点为主，在 debugger 的时候无意义的条件判断直接略过，看最后的 return 结果
+
+## 第四章：响应式系统
+
+### JS 的程序性
+
+js 本身就具备程序性，所谓程序性就是：一套固定的，不会发生变化的流程
+
+```js
+const product = {
+  price: 10,
+  quantity: 2
+};
+let total = product.price * product.quantity;
+console.log(`total: ${total}`); // 20
+
+product.quantity = 5;
+console.log(`total: ${total}`); // 20
+```
+
+### Proxy 和 Reflect
+
+::: warning
+使用 Proxy 的时候需要配合上 Reflect 会更安全，如果被代理对象内部通过 this 调用触发了 setter 和 getter，如果我们不使用 Reflect 绑定代理对象的 this  
+那被代理对象内部的的修改就监听不到了
+:::
