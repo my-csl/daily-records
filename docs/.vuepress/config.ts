@@ -19,7 +19,8 @@ export default defineUserConfig({
             '/guide/README.md',
             '/guide/getting-started.md',
             '/guide/interview-questions.md',
-            '/guide/vue3-source-code.md'
+            '/guide/vue3-source-code.md',
+            '/guide/other.md'
           ]
         }
       ]
